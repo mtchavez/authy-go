@@ -3,6 +3,7 @@ package authy
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -53,4 +54,15 @@ func (c *Client) NewUser(req *NewUserReq) NewUserResp {
 	data, _ := ioutil.ReadAll(resp.Body)
 	json.Unmarshal(data, &userResp)
 	return userResp
+}
+
+func (c *Client) Verify(req *VerifyReq) VerifyResp {
+	path := fmt.Sprintf("/protected/json/verify/%+v/%+v", req.Token, req.AuthyId)
+	resp, _ := http.Get(c.endpoint(path))
+
+	// Unmarshal JSON response
+	var verify VerifyResp
+	data, _ := ioutil.ReadAll(resp.Body)
+	json.Unmarshal(data, &verify)
+	return verify
 }

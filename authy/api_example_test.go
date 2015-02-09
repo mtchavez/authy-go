@@ -45,3 +45,29 @@ func ExampleClient_NewUser_WithErrors() {
 	// email is invalid and can't be blank
 	// message User was not valid.
 }
+
+func ExampleClient_Verify() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+	req := &VerifyReq{
+		Token:   "0000000",
+		AuthyId: 1,
+	}
+	resp := client.Verify(req)
+	fmt.Println("token:", resp.Token)
+	// Output:
+	// token: is valid
+}
+
+func ExampleClient_Verify_WithErrors() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+	req := &VerifyReq{
+		Token:   "1234567",
+		AuthyId: 1,
+	}
+	resp := client.Verify(req)
+	fmt.Printf("token:%+v\n", resp.Token)
+	fmt.Println("error:", resp.Errors["message"])
+	// Output:
+	// token:
+	// error: User doesn't exist.
+}
