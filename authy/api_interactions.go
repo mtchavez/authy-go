@@ -49,3 +49,22 @@ type CallResp struct {
 	Message string            `json:"message",omitempty`
 	Success bool              `json:"success",omitempty`
 }
+
+type UsersStatus struct {
+	AuthyId     int      `json:"authy_id"`
+	Confirmed   bool     `json:"confirmed"`
+	Registered  bool     `json:"registered"`
+	CountryCode int      `json:"country_code"`
+	PhoneNumber string   `json:"phone_number"`
+	Devices     []string `json:"devices"`
+}
+
+type UserStatusReq struct {
+	AuthyId int `json:"authy_id"`
+}
+
+type UserStatusResp struct {
+	Status  *UsersStatus `json:"status"`
+	Message string       `json:"message",omitempty`
+	Success bool         `json:"success",omitempty`
+}
