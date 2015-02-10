@@ -68,3 +68,12 @@ type UserStatusResp struct {
 	Message string       `json:"message",omitempty`
 	Success bool         `json:"success",omitempty`
 }
+
+type UserRemoveReq struct {
+	AuthyId int `json:"authy_id"`
+}
+
+type UserRemoveResp struct {
+	Message string `json:"message",omitempty`
+	Success bool   `json:"success",omitempty`
+}

@@ -1,6 +1,7 @@
 package authy
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -24,4 +25,16 @@ func (c *Client) UserStatus(req *UserStatusReq) UserStatusResp {
 	data, _ := ioutil.ReadAll(resp.Body)
 	json.Unmarshal(data, &verify)
 	return verify
+}
+
+func (c *Client) RemoveUser(req *UserRemoveReq) UserRemoveResp {
+	path := fmt.Sprintf("/protected/json/users/%+v/delete", req.AuthyId)
+	apiEndpoint := c.endpoint(path)
+	resp, _ := http.Post(apiEndpoint, "application/json", bytes.NewReader([]byte{}))
+
+	// Unmarshal JSON response
+	var userResp UserRemoveResp
+	data, _ := ioutil.ReadAll(resp.Body)
+	json.Unmarshal(data, &userResp)
+	return userResp
 }
