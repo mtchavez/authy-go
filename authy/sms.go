@@ -7,8 +7,10 @@ import (
 	"net/http"
 )
 
+// SMS will send a token via SMS
+// http://docs.authy.com/#section-SMS_Tokens.
 func (c *Client) SMS(req *SMSReq) SMSResp {
-	path := fmt.Sprintf("/protected/json/sms/%+v", req.AuthyId)
+	path := fmt.Sprintf("/protected/json/sms/%+v", req.AuthyID)
 	apiEndpoint := c.endpoint(path)
 	if req.Force {
 		apiEndpoint += "&force=true"

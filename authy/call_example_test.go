@@ -5,7 +5,7 @@ import "fmt"
 func ExampleClient_Call() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &CallReq{
-		AuthyId: 2,
+		AuthyID: 2,
 	}
 	resp := client.Call(req)
 	fmt.Println("success:", resp.Success)
@@ -18,7 +18,7 @@ func ExampleClient_Call() {
 func ExampleClient_Call_NotFound() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &CallReq{
-		AuthyId: 3,
+		AuthyID: 3,
 	}
 	resp := client.Call(req)
 	fmt.Println("success:", resp.Success)
@@ -31,7 +31,7 @@ func ExampleClient_Call_NotFound() {
 func ExampleClient_Force() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &CallReq{
-		AuthyId: 1,
+		AuthyID: 1,
 		Force:   true,
 	}
 	resp := client.Call(req)

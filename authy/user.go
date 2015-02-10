@@ -8,15 +8,18 @@ import (
 	"net/http"
 )
 
-type AuthyUser struct {
-	Id          int    `json:"id",omitempty`
+// User is the user created via the API
+type User struct {
+	ID          int    `json:"id",omitempty`
 	Email       string `json:"email"`
 	Cellphone   string `json:"cellphone"`
 	CountryCode int    `json:"country_code"`
 }
 
+// UserStatus gets status of an existing user
+// http://docs.authy.com/#section-User_Status
 func (c *Client) UserStatus(req *UserStatusReq) UserStatusResp {
-	path := fmt.Sprintf("/protected/json/users/%+v/status", req.AuthyId)
+	path := fmt.Sprintf("/protected/json/users/%+v/status", req.AuthyID)
 	apiEndpoint := c.endpoint(path)
 	resp, _ := http.Get(apiEndpoint)
 
@@ -27,8 +30,10 @@ func (c *Client) UserStatus(req *UserStatusReq) UserStatusResp {
 	return verify
 }
 
+// RemoveUser will delete a user from your account
+// http://docs.authy.com/#section-Deleting_User
 func (c *Client) RemoveUser(req *UserRemoveReq) UserRemoveResp {
-	path := fmt.Sprintf("/protected/json/users/%+v/delete", req.AuthyId)
+	path := fmt.Sprintf("/protected/json/users/%+v/delete", req.AuthyID)
 	apiEndpoint := c.endpoint(path)
 	resp, _ := http.Post(apiEndpoint, "application/json", bytes.NewReader([]byte{}))
 

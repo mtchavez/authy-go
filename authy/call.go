@@ -7,8 +7,10 @@ import (
 	"net/http"
 )
 
+// Call will send a toke via phone call
+// http://docs.authy.com/#section-Phone_Call_Tokens.
 func (c *Client) Call(req *CallReq) CallResp {
-	path := fmt.Sprintf("/protected/json/call/%+v", req.AuthyId)
+	path := fmt.Sprintf("/protected/json/call/%+v", req.AuthyID)
 	apiEndpoint := c.endpoint(path)
 	if req.Force {
 		apiEndpoint += "&force=true"

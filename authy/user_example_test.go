@@ -5,13 +5,13 @@ import "fmt"
 func ExampleClient_UserStatus() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &UserStatusReq{
-		AuthyId: 2,
+		AuthyID: 2,
 	}
 	resp := client.UserStatus(req)
 	fmt.Println("success:", resp.Success)
 	fmt.Println("message:", resp.Message)
 	fmt.Println("status:")
-	fmt.Println("authy_id:", resp.Status.AuthyId)
+	fmt.Println("authy_id:", resp.Status.AuthyID)
 	fmt.Println("confirmed:", resp.Status.Confirmed)
 	fmt.Println("registered:", resp.Status.Registered)
 	fmt.Println("country_code:", resp.Status.CountryCode)
@@ -32,7 +32,7 @@ func ExampleClient_UserStatus() {
 func ExampleClient_RemoveUser() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &UserRemoveReq{
-		AuthyId: 2,
+		AuthyID: 2,
 	}
 	resp := client.RemoveUser(req)
 	fmt.Println("success:", resp.Success)

@@ -1,23 +1,27 @@
 package authy
 
+// NewUserReq used to make NewUser API call
 type NewUserReq struct {
-	User *AuthyUser `json:"user"`
+	User *User `json:"user"`
 }
 
+// NewUserResp for JSON new user response
 type NewUserResp struct {
-	User    *AuthyUser        `json:"user"`
+	User    *User        `json:"user"`
 	Errors  map[string]string `json:"errors",omitempty`
 	Message string            `json:"message",omitempty`
 	Success bool              `json:"success",omitempty`
 }
 
+// VerifyReq used to make token verification API call
 type VerifyReq struct {
 	Token        string `json:"token"`
-	AuthyId      int    `json:"authy_id"`
+	AuthyID      int    `json:"authy_id"`
 	Force        bool   `json:"-"`
 	CustomAction string `json:"-"`
 }
 
+// VerifyResp for JSON token verification response
 type VerifyResp struct {
 	Token   string            `json:"token"`
 	Errors  map[string]string `json:"errors",omitempty`
@@ -25,13 +29,15 @@ type VerifyResp struct {
 	Success bool              `json:"success",omitempty`
 }
 
+// SMSReq used to make SMS token API call
 type SMSReq struct {
-	AuthyId      int    `json:"authy_id"`
+	AuthyID      int    `json:"authy_id"`
 	Force        bool   `json:"-"`
 	Shortcode    bool   `json:"-"`
 	CustomAction string `json:"-"`
 }
 
+// SMSResp for JSON SMS token response
 type SMSResp struct {
 	Errors    map[string]string `json:"errors",omitempty`
 	Message   string            `json:"message",omitempty`
@@ -39,19 +45,22 @@ type SMSResp struct {
 	Success   bool              `json:"success",omitempty`
 }
 
+// CallReq for phone call token API call
 type CallReq struct {
-	AuthyId int  `json:"authy_id"`
+	AuthyID int  `json:"authy_id"`
 	Force   bool `json:"-"`
 }
 
+// CallResp for JSON call token response
 type CallResp struct {
 	Errors  map[string]string `json:"errors",omitempty`
 	Message string            `json:"message",omitempty`
 	Success bool              `json:"success",omitempty`
 }
 
+// UsersStatus nested JSON user status response
 type UsersStatus struct {
-	AuthyId     int      `json:"authy_id"`
+	AuthyID     int      `json:"authy_id"`
 	Confirmed   bool     `json:"confirmed"`
 	Registered  bool     `json:"registered"`
 	CountryCode int      `json:"country_code"`
@@ -59,20 +68,24 @@ type UsersStatus struct {
 	Devices     []string `json:"devices"`
 }
 
+// UserStatusReq for user status API call
 type UserStatusReq struct {
-	AuthyId int `json:"authy_id"`
+	AuthyID int `json:"authy_id"`
 }
 
+// UserStatusResp for JSON user status response
 type UserStatusResp struct {
 	Status  *UsersStatus `json:"status"`
 	Message string       `json:"message",omitempty`
 	Success bool         `json:"success",omitempty`
 }
 
+// UserRemoveReq for delete user API call
 type UserRemoveReq struct {
-	AuthyId int `json:"authy_id"`
+	AuthyID int `json:"authy_id"`
 }
 
+// UserRemoveResp for JSON delete user response
 type UserRemoveResp struct {
 	Message string `json:"message",omitempty`
 	Success bool   `json:"success",omitempty`

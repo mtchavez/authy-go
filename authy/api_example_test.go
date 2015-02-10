@@ -5,7 +5,7 @@ import "fmt"
 func ExampleClient_NewUser() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &NewUserReq{
-		User: &AuthyUser{
+		User: &User{
 			Email:       "user@domain.com",
 			Cellphone:   "839-338-9302",
 			CountryCode: 1,
@@ -14,7 +14,7 @@ func ExampleClient_NewUser() {
 	resp := client.NewUser(req)
 	fmt.Println("Message:", resp.Message)
 	fmt.Println("User created?", resp.Success)
-	fmt.Println("User id:", resp.User.Id)
+	fmt.Println("User id:", resp.User.ID)
 	// Output:
 	// Message: User created successfully.
 	// User created? true
@@ -24,7 +24,7 @@ func ExampleClient_NewUser() {
 func ExampleClient_NewUser_WithErrors() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &NewUserReq{
-		User: &AuthyUser{},
+		User: &User{},
 	}
 	resp := client.NewUser(req)
 	fmt.Println("Message:", resp.Message)
@@ -50,7 +50,7 @@ func ExampleClient_Verify() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &VerifyReq{
 		Token:   "0000000",
-		AuthyId: 1,
+		AuthyID: 1,
 	}
 	resp := client.Verify(req)
 	fmt.Println("token:", resp.Token)
@@ -66,7 +66,7 @@ func ExampleClient_Verify_WithErrors() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &VerifyReq{
 		Token:   "1234567",
-		AuthyId: 1,
+		AuthyID: 1,
 	}
 	resp := client.Verify(req)
 	fmt.Printf("token:%+v\n", resp.Token)
@@ -82,7 +82,7 @@ func ExampleClient_Verify_Force() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &VerifyReq{
 		Token:   "939393",
-		AuthyId: 3,
+		AuthyID: 3,
 		Force:   true,
 	}
 	resp := client.Verify(req)
@@ -97,7 +97,7 @@ func ExampleClient_Verify_CustomAction() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &VerifyReq{
 		Token:        "0000000",
-		AuthyId:      1,
+		AuthyID:      1,
 		Force:        true,
 		CustomAction: "change_preferences",
 	}

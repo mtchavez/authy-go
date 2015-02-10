@@ -5,7 +5,7 @@ import "fmt"
 func ExampleClient_SMS() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &SMSReq{
-		AuthyId: 1,
+		AuthyID: 1,
 	}
 	resp := client.SMS(req)
 	fmt.Println("success:", resp.Success)
@@ -20,7 +20,7 @@ func ExampleClient_SMS() {
 func ExampleClient_SMS_Force() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &SMSReq{
-		AuthyId: 1,
+		AuthyID: 1,
 		Force:   true,
 	}
 	resp := client.SMS(req)
@@ -36,7 +36,7 @@ func ExampleClient_SMS_Force() {
 func ExampleClient_SMS_Shortcode() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &SMSReq{
-		AuthyId:   1,
+		AuthyID:   1,
 		Force:     true,
 		Shortcode: true,
 	}
@@ -53,7 +53,7 @@ func ExampleClient_SMS_Shortcode() {
 func ExampleClient_SMS_CustomAction() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
 	req := &SMSReq{
-		AuthyId:      1,
+		AuthyID:      1,
 		CustomAction: "change_preferences",
 	}
 	resp := client.SMS(req)
