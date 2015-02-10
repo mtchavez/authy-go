@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-var (
+const (
 	SANDBOX_URL = "http://sandbox-api.authy.com"
 	API_URL     = "http://api.authy.com"
 )
