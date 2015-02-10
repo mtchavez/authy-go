@@ -54,6 +54,10 @@ func ExampleClient_Verify() {
 	}
 	resp := client.Verify(req)
 	fmt.Println("token:", resp.Token)
+	// API is currently returning a string for success here for some reason
+	// fmt.Println("success:", resp.Success)
+	// success: true
+
 	// Output:
 	// token: is valid
 }
@@ -66,8 +70,25 @@ func ExampleClient_Verify_WithErrors() {
 	}
 	resp := client.Verify(req)
 	fmt.Printf("token:%+v\n", resp.Token)
+	fmt.Println("success:", resp.Success)
 	fmt.Println("error:", resp.Errors["message"])
 	// Output:
 	// token:
+	// success: false
+	// error: User doesn't exist.
+}
+
+func ExampleClient_Verify_Force() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+	req := &VerifyReq{
+		Token:   "939393",
+		AuthyId: 3,
+		Force:   true,
+	}
+	resp := client.Verify(req)
+	fmt.Println("success:", resp.Success)
+	fmt.Println("error:", resp.Errors["message"])
+	// Output:
+	// success: false
 	// error: User doesn't exist.
 }

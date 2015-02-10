@@ -11,7 +11,6 @@ import (
 var (
 	SANDBOX_URL = "http://sandbox-api.authy.com"
 	API_URL     = "http://api.authy.com"
-	REQ_FORMAT  = "json"
 )
 
 type Client struct {
@@ -58,7 +57,11 @@ func (c *Client) NewUser(req *NewUserReq) NewUserResp {
 
 func (c *Client) Verify(req *VerifyReq) VerifyResp {
 	path := fmt.Sprintf("/protected/json/verify/%+v/%+v", req.Token, req.AuthyId)
-	resp, _ := http.Get(c.endpoint(path))
+	apiEndpoint := c.endpoint(path)
+	if req.Force {
+		apiEndpoint += "&force=true"
+	}
+	resp, _ := http.Get(apiEndpoint)
 
 	// Unmarshal JSON response
 	var verify VerifyResp
