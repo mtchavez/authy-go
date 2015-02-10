@@ -13,6 +13,9 @@ func (c *Client) SMS(req *SMSReq) SMSResp {
 	if req.Force {
 		apiEndpoint += "&force=true"
 	}
+	if req.Shortcode {
+		apiEndpoint += "&shortcode=true"
+	}
 	if req.CustomAction != "" {
 		apiEndpoint += fmt.Sprintf("&action=%+v", req.CustomAction)
 	}

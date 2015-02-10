@@ -28,6 +28,7 @@ type VerifyResp struct {
 type SMSReq struct {
 	AuthyId      int    `json:"authy_id"`
 	Force        bool   `json:"-"`
+	Shortcode    bool   `json:"-"`
 	CustomAction string `json:"-"`
 }
 
