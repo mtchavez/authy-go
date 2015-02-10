@@ -38,3 +38,14 @@ type SMSResp struct {
 	Cellphone string            `json:"cellphone",omitempty`
 	Success   bool              `json:"success",omitempty`
 }
+
+type CallReq struct {
+	AuthyId int  `json:"authy_id"`
+	Force   bool `json:"-"`
+}
+
+type CallResp struct {
+	Errors  map[string]string `json:"errors",omitempty`
+	Message string            `json:"message",omitempty`
+	Success bool              `json:"success",omitempty`
+}
