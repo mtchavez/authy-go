@@ -92,3 +92,22 @@ func ExampleClient_Verify_Force() {
 	// success: false
 	// error: User doesn't exist.
 }
+
+func ExampleClient_Verify_CustomAction() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+	req := &VerifyReq{
+		Token:        "0000000",
+		AuthyId:      1,
+		Force:        true,
+		CustomAction: "change_preferences",
+	}
+	resp := client.Verify(req)
+	// API is currently returning a string for success here for some reason
+	// fmt.Println("success:", resp.Success)
+	// success: true
+	fmt.Println("message:", resp.Message)
+	fmt.Println("token:", resp.Token)
+	// Output:
+	// message: Token is valid.
+	// token: is valid
+}

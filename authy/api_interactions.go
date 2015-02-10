@@ -12,9 +12,10 @@ type NewUserResp struct {
 }
 
 type VerifyReq struct {
-	Token   string `json:"token"`
-	AuthyId int    `json:"authy_id"`
-	Force   bool   `json:"force",omitempty`
+	Token        string `json:"token"`
+	AuthyId      int    `json:"authy_id"`
+	Force        bool   `json:"-"`
+	CustomAction string `json:"-"`
 }
 
 type VerifyResp struct {

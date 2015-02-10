@@ -61,6 +61,9 @@ func (c *Client) Verify(req *VerifyReq) VerifyResp {
 	if req.Force {
 		apiEndpoint += "&force=true"
 	}
+	if req.CustomAction != "" {
+		apiEndpoint += fmt.Sprintf("&action=%+v", req.CustomAction)
+	}
 	resp, _ := http.Get(apiEndpoint)
 
 	// Unmarshal JSON response
