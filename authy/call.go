@@ -18,8 +18,8 @@ func (c *Client) Call(req *CallReq) CallResp {
 	resp, _ := http.Get(apiEndpoint)
 
 	// Unmarshal JSON response
-	var verify CallResp
+	var callResp CallResp
 	data, _ := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(data, &verify)
-	return verify
+	json.Unmarshal(data, &callResp)
+	return callResp
 }

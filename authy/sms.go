@@ -24,8 +24,8 @@ func (c *Client) SMS(req *SMSReq) SMSResp {
 	resp, _ := http.Get(apiEndpoint)
 
 	// Unmarshal JSON response
-	var verify SMSResp
+	var smsResp SMSResp
 	data, _ := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(data, &verify)
-	return verify
+	json.Unmarshal(data, &smsResp)
+	return smsResp
 }

@@ -24,10 +24,10 @@ func (c *Client) UserStatus(req *UserStatusReq) UserStatusResp {
 	resp, _ := http.Get(apiEndpoint)
 
 	// Unmarshal JSON response
-	var verify UserStatusResp
+	var status UserStatusResp
 	data, _ := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(data, &verify)
-	return verify
+	json.Unmarshal(data, &status)
+	return status
 }
 
 // RemoveUser will delete a user from your account
