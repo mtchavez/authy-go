@@ -18,6 +18,7 @@ func (c *Client) AppDetails() AppDetailsResp {
 	return details
 }
 
+// AppStats API call to get an application's stats
 func (c *Client) AppStats() AppStatsResp {
 	apiEndpoint := c.endpoint("/protected/json/app/stats")
 	resp, _ := http.Get(apiEndpoint)

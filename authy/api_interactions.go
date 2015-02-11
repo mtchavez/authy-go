@@ -114,6 +114,7 @@ type AppStat struct {
 	Year       int    `json:"year"`
 }
 
+// AppStatsResp for JSON app stats response
 type AppStatsResp struct {
 	Stats   []*AppStat `json:"stats"`
 	Message string     `json:"message",omitempty`
