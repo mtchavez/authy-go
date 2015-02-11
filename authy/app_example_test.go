@@ -21,3 +21,15 @@ func ExampleClient_AppDetails() {
 	// sms_enabled: false
 	// white_label: false
 }
+
+func ExampleClient_AppStats() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+	resp := client.AppStats()
+	fmt.Println("success:", resp.Success)
+	fmt.Println("message:", resp.Message)
+	fmt.Printf("%+v stats returned", len(resp.Stats))
+	// Output:
+	// success: true
+	// message: Monthly statistics.
+	// 12 stats returned
+}

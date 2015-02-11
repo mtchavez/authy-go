@@ -32,5 +32,4 @@ The tests will need an internet connection as they are doing live API Sandbox ca
 
 * Still need to implement these endpoints:
   * User register activity
-  * Application stats
 * DRY things up

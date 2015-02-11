@@ -17,3 +17,14 @@ func (c *Client) AppDetails() AppDetailsResp {
 	json.Unmarshal(data, &details)
 	return details
 }
+
+func (c *Client) AppStats() AppStatsResp {
+	apiEndpoint := c.endpoint("/protected/json/app/stats")
+	resp, _ := http.Get(apiEndpoint)
+
+	// Unmarshal JSON response
+	var stats AppStatsResp
+	data, _ := ioutil.ReadAll(resp.Body)
+	json.Unmarshal(data, &stats)
+	return stats
+}

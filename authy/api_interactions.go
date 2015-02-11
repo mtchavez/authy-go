@@ -105,3 +105,17 @@ type AppDetailsResp struct {
 	Message string      `json:"message",omitempty`
 	Success bool        `json:"success",omitempty`
 }
+
+// AppStat returned as slice in AppStatsResp
+type AppStat struct {
+	SmsCount   int    `json"sms_count"`
+	UsersCount int    `json:"users_count"`
+	Month      string `json"month"`
+	Year       int    `json:"year"`
+}
+
+type AppStatsResp struct {
+	Stats   []*AppStat `json:"stats"`
+	Message string     `json:"message",omitempty`
+	Success bool       `json:"success",omitempty`
+}
