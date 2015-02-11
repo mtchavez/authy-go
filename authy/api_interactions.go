@@ -7,7 +7,7 @@ type NewUserReq struct {
 
 // NewUserResp for JSON new user response
 type NewUserResp struct {
-	User    *User        `json:"user"`
+	User    *User             `json:"user"`
 	Errors  map[string]string `json:"errors",omitempty`
 	Message string            `json:"message",omitempty`
 	Success bool              `json:"success",omitempty`
@@ -89,4 +89,19 @@ type UserRemoveReq struct {
 type UserRemoveResp struct {
 	Message string `json:"message",omitempty`
 	Success bool   `json:"success",omitempty`
+}
+
+// AppDetails for App details JSON response
+type AppDetails struct {
+	Name       string `json:"name"`
+	Plan       string `json:"plan"`
+	SmsEnabled bool   `json:"sms_enabled"`
+	WhiteLabel bool   `json:"white_label"`
+}
+
+// AppDetailsResp for JSON app details response
+type AppDetailsResp struct {
+	App     *AppDetails `json:"app"`
+	Message string      `json:"message",omitempty`
+	Success bool        `json:"success",omitempty`
 }
