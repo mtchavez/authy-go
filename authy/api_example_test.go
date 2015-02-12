@@ -54,7 +54,7 @@ func ExampleClient_Verify() {
 	}
 	resp := client.Verify(req)
 	fmt.Println("token:", resp.Token)
-	// API is currently returning a string for success here for some reason
+	// TODO: API is currently returning a string for success here for some reason
 	// fmt.Println("success:", resp.Success)
 	// success: true
 
@@ -102,7 +102,7 @@ func ExampleClient_Verify_CustomAction() {
 		CustomAction: "change_preferences",
 	}
 	resp := client.Verify(req)
-	// API is currently returning a string for success here for some reason
+	// TODO: API is currently returning a string for success here for some reason
 	// fmt.Println("success:", resp.Success)
 	// success: true
 	fmt.Println("message:", resp.Message)
