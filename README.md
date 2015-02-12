@@ -31,3 +31,4 @@ The tests will need an internet connection as they are doing live API Sandbox ca
 ## TODO
 
 * DRY things up
+* Add example app integration
