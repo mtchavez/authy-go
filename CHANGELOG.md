@@ -1,3 +1,11 @@
+## v0.0.2
+
+Add remaining endpoints
+
+* AppDetails
+* AppStats
+* RegisterUserActivity
+
 ## v0.0.1
 
 Basic API endpoints implemented
