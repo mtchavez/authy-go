@@ -53,9 +53,10 @@ type CallReq struct {
 
 // CallResp for JSON call token response
 type CallResp struct {
-	Errors  map[string]string `json:"errors",omitempty`
-	Message string            `json:"message",omitempty`
-	Success bool              `json:"success",omitempty`
+	Errors    map[string]string `json:"errors",omitempty`
+	Message   string            `json:"message",omitempty`
+	Success   bool              `json:"success",omitempty`
+	Cellphone string            `json:"cellphone",omitempty`
 }
 
 // UsersStatus nested JSON user status response
