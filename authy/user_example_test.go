@@ -1,6 +1,9 @@
 package authy
 
-import "fmt"
+import (
+	"fmt"
+	"net/url"
+)
 
 func ExampleClient_UserStatus() {
 	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
@@ -40,4 +43,27 @@ func ExampleClient_RemoveUser() {
 	// Output:
 	// success: true
 	// message: User was added to remove.
+}
+
+func ExampleClient_RegisterActivity() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+	req := url.Values{"type": {"banned"}, "ip": {"86.112.56.34"}, "data[reason]": {"Too many login attempts."}, "data[attempts_count]": {"2500"}}
+	resp := client.RegisterActivity(2, req)
+	fmt.Println("success:", resp.Success)
+	fmt.Println("message:", resp.Message)
+	// Output:
+	// success: true
+	// message: Activity was created.
+}
+
+func ExampleClient_RegisterActivity_BadType() {
+	client := NewSandboxClient("d57d919d11e6b221c9bf6f7c882028f9")
+
+	req := url.Values{"type": {"bogus_login"}, "ip": {"86.112.56.34"}, "data[reason]": {"Too many login attempts."}, "data[attempts_count]": {"2500"}}
+	resp := client.RegisterActivity(2, req)
+	fmt.Println("success:", resp.Success)
+	fmt.Println("message:", resp.Message)
+	// Output:
+	// success: false
+	// message: You can only create the following activities: password_reset, banned, unbanned, cookie_login.
 }

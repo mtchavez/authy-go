@@ -120,3 +120,10 @@ type AppStatsResp struct {
 	Message string     `json:"message",omitempty`
 	Success bool       `json:"success",omitempty`
 }
+
+// RegisterActivityResp for JSON activity response
+type RegisterActivityResp struct {
+	Message string            `json:"message",omitempty`
+	Success bool              `json:"success",omitempty`
+	Errors  map[string]string `json:"errors",omitempty`
+}

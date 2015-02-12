@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 )
 
 // User is the user created via the API
@@ -42,4 +43,19 @@ func (c *Client) RemoveUser(req *UserRemoveReq) UserRemoveResp {
 	data, _ := ioutil.ReadAll(resp.Body)
 	json.Unmarshal(data, &userResp)
 	return userResp
+}
+
+// RegisterActivity API call to register activities user do in your app.
+// Takes the AuthyID of the user and a url.Values for the form parameters the endpoint takes.
+// http://docs.authy.com/#section-Register_User_Activitie
+func (c *Client) RegisterActivity(AuthyID int, req url.Values) RegisterActivityResp {
+	path := fmt.Sprintf("/protected/json/users/%+v/register_activity", AuthyID)
+	apiEndpoint := c.endpoint(path)
+	resp, _ := http.PostForm(apiEndpoint, req)
+
+	// Unmarshal JSON response
+	var register RegisterActivityResp
+	data, _ := ioutil.ReadAll(resp.Body)
+	json.Unmarshal(data, &register)
+	return register
 }
